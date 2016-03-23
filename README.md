@@ -4,12 +4,16 @@ Create **VNC** servers on minutes using docker
 
 # Building and running from source
 
+	$ docker-compose build source
 	$ docker-compose up source
 
 # Running from docker hub
 
 	$ docker-compose up docker-hub
 
+# Connecting 
+
+Connect on `127.0.0.1:5900`, the defult password is `12345`
 
 # License
 
