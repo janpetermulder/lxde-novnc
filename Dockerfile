@@ -11,7 +11,7 @@ COPY setup-start /usr/bin
 WORKDIR /data
 
 # Define default command.
-CMD ["bash"]
+CMD ["setup-start"]
 
 # Expose ports.
 EXPOSE 5901

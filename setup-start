@@ -3,7 +3,12 @@
 BASE_PATH=/data/home
 for i in $BASE_PATH/* ;do
 	FNAME=$(basename $i)
-	echo "updating $FNAME folder..."
-	cp -r $i/* $i/.* /home/$FNAME
+	if [ $FNAME = "root" ]; then
+		echo "updating the root folder..."
+		cp -r $i/* $i/.* /$FNAME
+	else
+		echo "updating $FNAME folder..."
+		cp -r $i/* $i/.* /home/$FNAME
+	fi
 done
-vncserver :1 -geometry 1280x800 -depth 24 && tail -F /root/.vnc/*.log"
+vncserver :1 -geometry 1280x800 -depth 24 && tail -F /root/.vnc/*.log
