@@ -1,0 +1,8 @@
+#!/bin/bash
+
+BASE_PATH=/data/home
+for i in $BASE_PATH/* ;do
+	FNAME=$(basename $i)
+	echo "updating $FNAME folder..."
+	cp -r $i/* $i/.* /home/$FNAME
+done
