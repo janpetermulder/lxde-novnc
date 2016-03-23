@@ -7,9 +7,6 @@ RUN apt-get update && \
 COPY home/ /data/home
 COPY setup-start /usr/bin
 
-# Define working directory.
-WORKDIR /data
-
 # Define default command.
 CMD ["setup-start"]
 
