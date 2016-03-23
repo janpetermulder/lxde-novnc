@@ -5,7 +5,7 @@ RUN apt-get update && \
 	rm -rf /var/lib/apt/lists/*
 
 COPY home/ /data/home
-COYP setup-start /usr/bin
+COPY setup-start /usr/bin
 
 # Define working directory.
 WORKDIR /data
