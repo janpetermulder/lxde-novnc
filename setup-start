@@ -6,3 +6,4 @@ for i in $BASE_PATH/* ;do
 	echo "updating $FNAME folder..."
 	cp -r $i/* $i/.* /home/$FNAME
 done
+vncserver :1 -geometry 1280x800 -depth 24 && tail -F /root/.vnc/*.log"
