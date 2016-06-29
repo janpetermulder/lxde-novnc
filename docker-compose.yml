@@ -1,5 +1,5 @@
 docker-hub:
-  image: defreitas/lubuntu-desktop-x11vnc-server
+  image: defreitas/lubuntu-desktop-tightvncserver
   container_name: 'ubuntu-gui'
   domainname: mageddo.com
   hostname: ubuntu
