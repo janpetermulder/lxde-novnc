@@ -1,4 +1,4 @@
-version: 3
+version: '3'
 services:
   docker-hub:
     image: defreitas/lubuntu-desktop-tightvncserver:debian-9_2
