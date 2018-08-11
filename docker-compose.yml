@@ -1,16 +1,22 @@
-docker-hub:
-  image: defreitas/lubuntu-desktop-tightvncserver:debian-9_2
-  hostname: vm.docker
-  ports:
-    - 5901:5901
-  environment:
-    - USER=root
-  command: bash -c "vncserver :1 -geometry 1280x800 -depth 24 && tail -F /root/.vnc/*.log"
+version: 3
+services:
+  docker-hub:
+    image: defreitas/lubuntu-desktop-tightvncserver:debian-9_2
+    hostname: vm.docker
+    ports:
+      - 5901:5901
+    environment:
+      - USER=root
+    command: bash -c "vncserver :1 -geometry 1280x800 -depth 24 && tail -F /root/.vnc/*.log"
 
-source:
-  build: ./
-  hostname: vm.docker
-  ports:
-    - 5901:5901
-  environment:
-    - USER=root
+  source:
+    build: ./
+    hostname: vm.docker
+    deploy:
+      resources:
+        limits:
+          memory: 300m
+    ports:
+      - 5901:5901
+    environment:
+      - USER=root
