@@ -1,20 +1,16 @@
 docker-hub:
-  image: defreitas/lubuntu-desktop-tightvncserver
-  container_name: 'ubuntu-gui'
-  domainname: mageddo.com
-  hostname: ubuntu
+  image: defreitas/lubuntu-desktop-tightvncserver:debian-9_2
+  hostname: vm.docker
   ports:
-    - "5901:5901"
+    - 5901:5901
   environment:
     - USER=root
   command: bash -c "vncserver :1 -geometry 1280x800 -depth 24 && tail -F /root/.vnc/*.log"
 
 source:
   build: ./
-  container_name: 'ubuntu-gui'
-  domainname: mageddo.com
-  hostname: ubuntu
+  hostname: vm.docker
   ports:
-    - "5901:5901"
+    - 5901:5901
   environment:
     - USER=root
