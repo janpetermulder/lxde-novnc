@@ -5,9 +5,6 @@ services:
     hostname: vm.docker
     ports:
       - 5901:5901
-    environment:
-      - USER=root
-    command: bash -c "vncserver :1 -geometry 1280x800 -depth 24 && tail -F /root/.vnc/*.log"
 
   source:
     build: ./
@@ -19,4 +16,5 @@ services:
     ports:
       - 5901:5901
     environment:
-      - USER=root
+      - RESOLUTION=1900x1000
+    network_mode: bridge
