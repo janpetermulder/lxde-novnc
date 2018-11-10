@@ -4,8 +4,12 @@ RUN apt-get update && \
 	DEBIAN_FRONTEND=noninteractive apt-get install -y lxde tightvncserver nano vim curl && \
 	apt-get clean && rm -rf /var/lib/apt/lists/*
 
-COPY home/ /data/home
-COPY setup-start /usr/bin
+ENV USER=root
+USER root
 
-CMD ["setup-start"]
+COPY home/root/.vnc /root/.vnc
+COPY entrypoint.sh /usr/bin/entrypoint.sh
+RUN chmod +x /usr/bin/entrypoint.sh
+ENTRYPOINT ["/usr/bin/entrypoint.sh"]
+CMD exec bash -c "vncserver :1 -geometry 1280x800 -depth 24 && tail -F /root/.vnc/*.log"
 EXPOSE 5901
