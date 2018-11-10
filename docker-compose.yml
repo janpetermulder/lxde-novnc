@@ -16,5 +16,5 @@ services:
     ports:
       - 5901:5901
     environment:
-      - RESOLUTION=1900x1000
+      - RESOLUTION=1024x768
     network_mode: bridge
