@@ -4,8 +4,7 @@ Create **VNC** servers on minutes using docker
 
 ### Building and running from source
 
-	$ docker-compose build source
-	$ docker-compose up source
+	$ docker-compose up --build source
 
 ### Running from docker hub
 
