@@ -1,7 +1,7 @@
 FROM debian:9
 
 RUN apt-get update && \
-	DEBIAN_FRONTEND=noninteractive apt-get install -y lxde tightvncserver nano vim curl && \
+	DEBIAN_FRONTEND=noninteractive apt-get install -y lxde tightvncserver autocutsel vim curl && \
 	apt-get clean && rm -rf /var/lib/apt/lists/*
 
 ENV USER=root
