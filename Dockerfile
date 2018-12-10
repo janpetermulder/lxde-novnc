@@ -29,7 +29,6 @@ RUN apk --update --upgrade add git bash supervisor nodejs nodejs-npm \
 
 COPY home/root/.vnc /root/.vnc
 COPY entrypoint.sh /usr/bin/entrypoint.sh
-novnc:
 COPY supervisord.conf /etc/supervisor/conf.d/supervisord.conf 
 
 RUN chmod +x /usr/bin/entrypoint.sh
