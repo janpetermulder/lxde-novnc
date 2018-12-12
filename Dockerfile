@@ -22,12 +22,6 @@ RUN apt-get update \
  && rm -rf /root/noVNC/.git \
  && rm -rf /root/noVNC/utils/websockify/.git \
  && cd /root/noVNC \	
- && npm install npm@latest \
- && npm install \
- && ./utils/use_require.js --as commonjs --with-app \
- && cp /root/noVNC/node_modules/requirejs/require.js /root/noVNC/build \
- && sed -i -- "s/ps -p/ps -o pid | grep/g" /root/noVNC/utils/launch.sh \
- && apt-get remove git nodejs \
  && apt-get clean
 
 COPY home/root/.vnc /root/.vnc
