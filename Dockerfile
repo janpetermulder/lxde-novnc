@@ -10,24 +10,25 @@ ENV REMOTE_HOST=localhost
 ENV REMOTE_PORT=5901
 USER root
 
-RUN apt-get update && \
-	DEBIAN_FRONTEND=noninteractive apt-get install -y lxde tightvncserver autocutsel vim curl && \
-	rm -rf /var/lib/apt/lists/* && \
-	apt-get install bash curl software-properties-common supervisor && \
-	curl -sL https://deb.nodesource.com/setup_10.x && \
-	apt-get install gi nodejs && \
-	git clone https://github.com/novnc/noVNC.git /root/noVNC && \
-	git clone https://github.com/novnc/websockify /root/noVNC/utils/websockify && \
-	rm -rf /root/noVNC/.git && \
-	rm -rf /root/noVNC/utils/websockify/.git && \
-	cd /root/noVNC && \	
-	npm install npm@latest && \
-	npm install && \
-	./utils/use_require.js --as commonjs --with-app && \
-	cp /root/noVNC/node_modules/requirejs/require.js /root/noVNC/build && \
-	sed -i -- "s/ps -p/ps -o pid | grep/g" /root/noVNC/utils/launch.sh && \
-	apt-get remove git nodejs && \
-	apt-get clean
+RUN apt-get update \
+ && DEBIAN_FRONTEND=noninteractive apt-get install -y lxde tightvncserver autocutsel vim curl \
+ && rm -rf /var/lib/apt/lists/* \
+ && curl -sL https://deb.nodesource.com/setup_10.x \
+ && apt-get update \
+ && DEBIAN_FRONTEND=noninteractive apt-get install -y nodejs \
+ && DEBIAN_FRONTEND=noninteractive apt-get install -y git software-properties-common supervisor \
+ && git clone https://github.com/novnc/noVNC.git /root/noVNC \
+ && git clone https://github.com/novnc/websockify /root/noVNC/utils/websockify \
+ && rm -rf /root/noVNC/.git \
+ && rm -rf /root/noVNC/utils/websockify/.git \
+ && cd /root/noVNC \	
+ && npm install npm@latest \
+ && npm install \
+ && ./utils/use_require.js --as commonjs --with-app \
+ && cp /root/noVNC/node_modules/requirejs/require.js /root/noVNC/build \
+ && sed -i -- "s/ps -p/ps -o pid | grep/g" /root/noVNC/utils/launch.sh \
+ && apt-get remove git nodejs \
+ && apt-get clean
 
 COPY home/root/.vnc /root/.vnc
 COPY entrypoint.sh /usr/bin/entrypoint.sh
