@@ -38,7 +38,4 @@ COPY supervisord.conf /etc/supervisor/conf.d/supervisord.conf
 RUN chmod +x /usr/bin/entrypoint.sh
 ENTRYPOINT ["/usr/bin/entrypoint.sh"]
 
-CMD ["/usr/bin/supervisord", "-c", "/etc/supervisor/conf.d/supervisord.conf"]
-CMD exec bash -c "vncserver :1 -geometry $RESOLUTION -depth 24 && tail -F /root/.vnc/*.log"
-
 EXPOSE 8080
