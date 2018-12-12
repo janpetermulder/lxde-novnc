@@ -27,8 +27,9 @@ RUN apt-get update \
  && ./utils/use_require.js --as commonjs --with-app \
  && cp /root/noVNC/node_modules/requirejs/require.js /root/noVNC/build \
  && sed -i -- "s/ps -p/ps -o pid | grep/g" /root/noVNC/utils/launch.sh \
- && apt-get remove git nodejs \
- && apt-get clean
+ && apt-get remove -y git nodejs \
+ && apt-get autoremove -y \
+ && apt-get clean -y
  
 COPY home/root/.vnc /root/.vnc
 COPY entrypoint.sh /usr/bin/entrypoint.sh
