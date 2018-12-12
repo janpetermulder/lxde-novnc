@@ -11,7 +11,7 @@ ENV REMOTE_PORT=5901
 USER root
 
 RUN apt-get update \
- && DEBIAN_FRONTEND=noninteractive apt-get install -y lxde-core tightvncserver autocutsel vim curl gnupg \
+ && DEBIAN_FRONTEND=noninteractive apt-get install -y lxde-core bash tightvncserver autocutsel vim curl gnupg \
  && rm -rf /var/lib/apt/lists/* \
  && curl -sL https://deb.nodesource.com/setup_10.x | bash - \
  && apt-get update \
